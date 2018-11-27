@@ -3,26 +3,26 @@ import React from "react";
 
 const CloseNote = ({note, changeState, deleteNote}) => {
     return(
-        <div>
-            <div type ="text">
+        <div className="closeList">
+            <div className="closeList note">
                 {note.discription}
             </div>
-            <div>
-                <button 
-                    className="bg-primary btn-sm"
+            <a className="hand" href="public/index.html" 
+                onClick={(e) => e.preventDefault()}>
+                <div
+                    className="hand edit" 
                     onClick = {() =>{
                         changeState();
-                    }}
-                >
-                    <div>Edit</div>
-                </button>
-                <button 
-                    className=" bg-danger btn-sm"
-                    onClick = {() =>deleteNote(note.id)}
-                >
-                    Delete
-                </button>
-            </div>
+                    }}>
+                </div>
+            </a>
+            <a className="hand" href="public/index.html" 
+                onClick={(e) => e.preventDefault()}>
+                <div
+                    className="hand delete" 
+                    onClick = {() => deleteNote(note.id)}>
+                </div>
+            </a>
         </div>
     )
 }

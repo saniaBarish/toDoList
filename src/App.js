@@ -1,6 +1,5 @@
 import React,{Component} from "react";
 import ToDoList from "./components/ToDoList";
-import "./style/trello.css"
 
 
 class App extends Component{
@@ -9,12 +8,12 @@ class App extends Component{
         return(
             <div>
                 <header>
-                    <div className="row">
-                        <h1 className="app-name left">ToDo</h1>
-                    </div>
+                   
+                        <div className="header">ToDo</div>
+                    
                 </header>
-                <section className="lists-container">
-                    <div className="row">
+                <section>
+                    <div>
                         <ToDoList/>
                     </div>
                 </section>

@@ -17,6 +17,19 @@ class ToDoList extends Component{
         })
     }
 
+    editList = (id, name) =>{
+        const newLists = this.state.lists.map(list =>{
+            if (list.id === id){
+                list.name = name;
+            }
+            return list
+        })
+
+        this.setState({
+            lists: newLists
+        })
+    }
+
     deleteNote = (noteId) =>{
         const newNotes = this.state.notes.filter(note => note.id !== noteId)
 
@@ -42,7 +55,6 @@ class ToDoList extends Component{
         newNotes.forEach(note =>{
             if (note.id === noteId){
                 note.listId = +newListId
-                console.log(note)
             }
         })
 
@@ -53,9 +65,6 @@ class ToDoList extends Component{
 
     }
         
-    
-
-
     getFilterNote = (ListId) => this.state.notes.filter(note => note.listId === ListId)
 
     addList = (name) => {
@@ -85,39 +94,46 @@ class ToDoList extends Component{
         return(
             this.state.lists.map(list => {
                 return(
-                    
-                        <section 
-                            className="list list-inline"
-                            key = {list.id}
+                    <section 
+                        key = {list.id}
                         >
-                            <ToDoNoteList 
-                                list = {list} 
-                                notes = {this.getFilterNote(list.id)}
-                                addNote = {this.addNote}
-                                lists = {this.state.lists}
-                                editNote = {this.editNote}
-                                deleteNote = {this.deleteNote}
-                                deleteList = {this.deleteList}
-                                transferNote = {this.transferNote}
-                            />
-                        </section>
+                        <ToDoNoteList 
+                            list = {list} 
+                            notes = {this.getFilterNote(list.id)}
+                            addNote = {this.addNote}
+                            lists = {this.state.lists}
+                            editNote = {this.editNote}
+                            deleteNote = {this.deleteNote}
+                            deleteList = {this.deleteList}
+                            transferNote = {this.transferNote}
+                            editList = {this.editList}
+                        />
+                    </section>
                    
                 )
             })
         )
     }
 
-
-
-
-
     render(){
         return(
             <div>
                 {this.elementsToDoNoteList()}
-                <section className="list new-list list-inline"> 
-                    
+                <section className="card newList"> 
+                    <div className="card input">
+                        <a 
+                            href="public/index.html" 
+                            className="hand"
+                            onClick={(e)=>{e.preventDefault()}}>
+                            <div className="hand addList"
+                                onClick={()=>{ 
+                                    this.addList(document.getElementById("addList").value);
+                                    document.getElementById("addList").value = "";
+                                }}>
+                            </div>
+                        </a>
                         <input 
+                            className="inputNewList"
                             type="text"  
                             id = "addList"
                             onKeyDown = {(event) => {
@@ -126,9 +142,9 @@ class ToDoList extends Component{
                                     document.getElementById("addList").value = "";
                                 }        
                             }}
-                        >
+                            >
                         </input>
-                   
+                    </div>
                 </section>
             </div>
         )
