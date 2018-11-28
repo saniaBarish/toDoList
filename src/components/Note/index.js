@@ -1,6 +1,7 @@
 import React,{Component} from "react";
 import OpenNote from "./OpenNote";
 import CloseNote from "./CloseNote";
+import { connect } from "react-redux";
 
 class Note extends Component{
     state = {
@@ -8,7 +9,7 @@ class Note extends Component{
     }
 
     render(){
-        const {note, lists, editNote, deleteNote, transferNote} = this.props;
+        const {note, lists} = this.props;
         return(
             <div>
                 {this.state.isOpen ?
@@ -16,9 +17,10 @@ class Note extends Component{
                         note = {note} 
                         changeState = {this.changeState} 
                         lists= {lists} 
-                        editNote={editNote} 
-                        transferNote ={transferNote}/> : 
-                    <CloseNote note = {note} changeState = {this.changeState} deleteNote={deleteNote}/>
+                        editNote={this.props.onEditNote} 
+                        transferNote ={this.props.onTransferNote}
+                        /> : 
+                    <CloseNote note = {note} changeState = {this.changeState} deleteNote={this.props.onDeleteNote}/>
                 }
             </div>
         )
@@ -31,4 +33,27 @@ class Note extends Component{
     }
 }
 
-export default Note;
+export default connect(
+    state => ({
+        store: state
+    }),
+    dispatch => ({
+        onEditNote: (id, discription) => {
+            dispatch({type:"EDIT_NOTE", payload:{
+                    id: id,
+                    discription: discription
+                }
+            })
+        },
+        onDeleteNote: (id) => {
+            dispatch({type:"DELETE_NOTE", payload: id})
+        },
+        onTransferNote: (id, listId) => [
+            dispatch({type:"TRANSFER_NOTE", payload:{
+                id: id,
+                listId: listId
+            }
+        })
+        ]
+    })
+)(Note);

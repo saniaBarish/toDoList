@@ -1,6 +1,6 @@
 import React from "react"
 
-const Header = ({listId, listName, editList, changeState}) => {
+const OpenHeader = ({listId, listName, editList, changeState}) => {
     return(
         <div className="openHeader">
             <input 
@@ -10,17 +10,18 @@ const Header = ({listId, listName, editList, changeState}) => {
                 onKeyDown={(e)=>{
                     if (e.keyCode === 13){
                         editList(listId,document.getElementById("inputHeader" + listId).value);
-                        changeState();
+                        changeState()   
                     }
                 }}>
             </input>
             <button className="buttonHeader" onClick={() => {
                 editList(listId,document.getElementById("inputHeader" + listId).value);
-                changeState();}}>
+                changeState();
+                }}>
                 &#10004;
             </button>
         </div>
     )
 }
 
-export default Header
+export default OpenHeader

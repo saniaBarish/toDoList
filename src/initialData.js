@@ -33,3 +33,5 @@ export const lists = [
         listId: lists[1].id
     }
 ]
+
+export const initialData = [lists, notes];

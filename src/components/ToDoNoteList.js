@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Header from "./Header/"
 import Note from "./Note"
+import { connect } from "react-redux";
 
 
 class ToDoNoteList extends Component {
@@ -16,18 +17,15 @@ class ToDoNoteList extends Component {
     }
 
     render(){
-        const {list, notes, addNote, lists, editNote, deleteNote, deleteList, transferNote, editList} = this.props;
+        const {list} = this.props;
         const elemenstNote = () => {
             return(
-                notes.map(note => {
+                this.props.store[1].filter(note => note.listId === list.id).map(note => {
                     return (
                         <section key = {note.id}> 
                             <Note 
                                 note={note} 
-                                lists={lists} 
-                                editNote={editNote} 
-                                deleteNote={deleteNote}
-                                transferNote= {transferNote}
+                                lists={this.props.store[0]} 
                             /> 
                         </section>
                     )
@@ -42,13 +40,12 @@ class ToDoNoteList extends Component {
                         <div id="penId" className="hand editList" onClick={()=> {this.changeState()}}></div>
                     </a>
                     <a className="hand" href="public/index.html" onClick={(e) => e.preventDefault()}>
-                        <div className="hand deleteList" onClick={()=>deleteList(list.id)}></div>
+                        <div className="hand deleteList" onClick={()=>this.props.onDeleteList(list.id)}></div>
                     </a>
                     <Header 
                         listId={list.id} 
                         listName={list.name} 
                         isOpen={this.state.isOpen}
-                        editList={editList}
                         changeState={this.changeState}
                     />
                 </h1>
@@ -62,7 +59,7 @@ class ToDoNoteList extends Component {
                         onClick={(e) => {e.preventDefault()}}>
                         <div className="hand addList"
                             onClick={() => {
-                                addNote(list.id, document.getElementById(list.id).value);
+                                this.props.onAddNote(list.id, document.getElementById(list.id).value);
                                 document.getElementById(list.id).value = "";}
                             }>
                         </div>
@@ -71,7 +68,7 @@ class ToDoNoteList extends Component {
                         id = {list.id}
                         onKeyDown = {(event) =>{
                             if (event.keyCode === 13){
-                                addNote(list.id, document.getElementById(list.id).value);
+                                this.props.onAddNote(list.id, document.getElementById(list.id).value);
                                 document.getElementById(list.id).value = "";
                             }
                         }}>
@@ -83,4 +80,19 @@ class ToDoNoteList extends Component {
     }
 }
 
-export default ToDoNoteList;
+export default connect(
+    state => ({
+        store: state
+    }),
+    dispatch => ({
+        onAddNote: (listId, discription) => {
+            dispatch({type: "ADD_NOTE", payload: {
+                discription: discription,
+                listId: listId
+            }})
+        },
+        onDeleteList: (listId) => {
+            dispatch({type: "DELETE_LIST", payload: listId})
+        }
+    })
+)(ToDoNoteList);
