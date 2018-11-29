@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/toDoList/static/media/x.6f3acc0d.svg"
   },
   {
-    "revision": "c28fa661303d5ba7cc5a",
-    "url": "/toDoList/static/css/main.d1a8135b.chunk.css"
+    "revision": "d52e9c5ae01629c5a222",
+    "url": "/toDoList/static/css/main.90b01488.chunk.css"
   },
   {
-    "revision": "14c1905c62793827a18a",
-    "url": "/toDoList/static/js/1.14c1905c.chunk.js"
+    "revision": "6f2ccfc571dfc2565fdd",
+    "url": "/toDoList/static/js/1.6f2ccfc5.chunk.js"
   },
   {
     "revision": "6603c14d6b98c47b0557",
@@ -20,8 +20,8 @@ self.__precacheManifest = [
     "url": "/toDoList/static/media/pen_alt_fill.65e11725.svg"
   },
   {
-    "revision": "c28fa661303d5ba7cc5a",
-    "url": "/toDoList/static/js/main.c28fa661.chunk.js"
+    "revision": "d52e9c5ae01629c5a222",
+    "url": "/toDoList/static/js/main.d52e9c5a.chunk.js"
   },
   {
     "revision": "b840fd722fd618faa0374476f6e0d201",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/toDoList/static/media/pen_alt_stroke.0d929bbe.svg"
   },
   {
-    "revision": "57c4b74e677c5c84860c8d225918d45f",
+    "revision": "9f10952998388a6be4bec962a380e210",
     "url": "/toDoList/index.html"
   }
 ];
