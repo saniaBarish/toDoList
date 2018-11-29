@@ -1,7 +1,8 @@
 import React,{Component} from "react";
 import OpenNote from "./OpenNote";
-import CloseNote from "./CloseNote";
+import CloseNote from "../../components/CloseNote";
 import { connect } from "react-redux";
+import {editNote, deleteNote, transferNote} from "../../reduser/cardList"
 
 class Note extends Component{
     state = {
@@ -35,25 +36,11 @@ class Note extends Component{
 
 export default connect(
     state => ({
-        store: state
+        store: state.cardList
     }),
-    dispatch => ({
-        onEditNote: (id, discription) => {
-            dispatch({type:"EDIT_NOTE", payload:{
-                    id: id,
-                    discription: discription
-                }
-            })
-        },
-        onDeleteNote: (id) => {
-            dispatch({type:"DELETE_NOTE", payload: id})
-        },
-        onTransferNote: (id, listId) => [
-            dispatch({type:"TRANSFER_NOTE", payload:{
-                id: id,
-                listId: listId
-            }
-        })
-        ]
-    })
+    {
+        onEditNote: (id, discription) => editNote({id, discription}) ,
+        onDeleteNote: deleteNote,
+        onTransferNote: (id, listId) => transferNote({id, listId})
+    }
 )(Note);

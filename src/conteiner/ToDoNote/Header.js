@@ -1,14 +1,14 @@
 import React, {Component} from "react"
-import OpenHeader from "./OpenHeader"
-import CloseHeader from "./CloseHeader"
+import OpenHeader from "../../components/OpenHeader"
+import CloseHeader from "../../components/CloseHeader"
 import {connect} from "react-redux"
+import {editList} from "../../reduser/cardList"
 
 
 class Header extends Component{
 
     render(){
         const {listId, listName, isOpen, changeState} = this.props;
-        
         return(
             isOpen ? 
             <OpenHeader listId={listId} listName={listName} editList={this.props.onEditList} changeState={changeState}/> : 
@@ -19,14 +19,9 @@ class Header extends Component{
 
 export default connect(
     state => ({
-        store: state
+        store: state.cardList
     }),
-    dispatch => ({
-        onEditList: (id, name) =>{
-            dispatch({type: "EDIT_LIST", payload: {
-                id: id,
-                name: name
-            }})
-        }
-    })
+    {
+        onEditList: (id, name) => editList({id, name})
+    }
 )(Header)

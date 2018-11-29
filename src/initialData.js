@@ -20,18 +20,17 @@ export const lists = [
     {
         id: 1,
         discription: "Fix bug whith player",
-        listId: lists[0].id
+        listId: +lists[0].id
     },
     {
         id: 2,
         discription: "Add feature with D3",
-        listId: lists[0].id
+        listId: +lists[0].id
     },
     {
         id: 3,
         discription: "Learn EmberJS",
-        listId: lists[1].id
+        listId: +lists[1].id
     }
 ]
-
-export const initialData = [lists, notes];
+export default {lists, notes};

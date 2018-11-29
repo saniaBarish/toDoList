@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import ToDoList from "./components/ToDoList";
+import ToDo from "./ToDo";
 
 
 class App extends Component{
@@ -11,9 +11,9 @@ class App extends Component{
                         <div className="header">ToDo</div>
                 </header>
                 <section>
-                    <div>
-                        <ToDoList/>
-                    </div>
+                    
+                        <ToDo/>
+                
                 </section>
             </div>
         )
