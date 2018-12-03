@@ -11,6 +11,8 @@ export const editList = createAction("EDIT_LIST");
 export const editNote = createAction("EDIT_NOTE");
 export const deleteNote = createAction("DELETE_NOTE");
 export const transferNote = createAction("TRANSFER_NOTE");
+export const changeStateNote = createAction("CHANGE_STATE_NOTE");
+export const changeStateList = createAction("CHANGE_STATE_LIST");
 
 
 
@@ -18,7 +20,8 @@ export default handleActions({
     [addList]: ({lists, notes}, {payload: name}) => ({
         lists: [...lists, {
             id: +_.uniqueId(),
-            name: name
+            name: name,
+            isOpen: false
         }],
         notes: notes
     }),
@@ -28,7 +31,8 @@ export default handleActions({
         notes: [...notes, {
             id: +_.uniqueId(),
             discription: discription,
-            listId: +listId
+            listId: +listId,
+            isOpen: false
         }]
     }),
 
@@ -74,6 +78,26 @@ export default handleActions({
             }
             return note
         })
+    }),
+    [changeStateNote]: ({lists, notes},{payload: id}) => ({
+        lists: lists,
+        notes: notes.map(note => {
+            if (note.id === id){
+                note.isOpen = !note.isOpen
+                return note
+            }
+            return note
+        })
+    }),
+    [changeStateList]: ({lists, notes},{payload: id}) => ({
+        lists: lists.map(list => {
+            if (list.id === id){
+                list.isOpen = !list.isOpen
+                return list
+            }
+            return list
+        }),
+        notes: notes
     })
 
 },initialData
@@ -82,4 +106,4 @@ const REDUCER_NAME = "cardList";
 
 export const stateSelector = (state) => get(state, REDUCER_NAME);
 export const listsSelector = createSelector(stateSelector, (state)=> get(state,"lists"));
-// const loadingSelector = createSelector(stateSelector, getReducerProp('loading'));
+export const notesSelector = createSelector(stateSelector, (state) => get(state,"notes"));

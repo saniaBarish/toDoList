@@ -1,7 +1,6 @@
 body{
     margin: 0;
     padding: 0;
-    outline: 0px solid;
     background-color: #d8dada;
 }
 
@@ -19,6 +18,49 @@ body{
     left: 35px;
 }
 
+.card.bigCard{
+    float: none;
+    margin: 30px auto;
+    height: 800px;
+    width: 500px;
+}
+
+.card.bigCard #head{
+    font-size: 70px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: gray
+}
+
+.card.bigCard #openHeader{
+    left: 50px;
+    width: 400px;
+}
+
+.card.bigCard #openHeader input{
+    height: 40px;
+    width: 300px;
+    top:-7px;
+}
+
+.card.bigCard #openHeader button{
+    top: -10px;
+    height: 35px;
+    width: 35px;
+}
+
+.card.body.bigCard{
+    width: 450px;
+    height: 600px;
+    margin: auto;
+}
+
 .card.input.header{
     position: absolute;
     text-align: left;
@@ -34,7 +76,6 @@ body{
 header{
     margin: 0;
     padding-left: 10px;
-    outline: 0px solid;
     background-color: rgb(119, 110, 245);
     background-image: url("./img/header.jpeg");
     height: 100px;
@@ -42,15 +83,12 @@ header{
     font-family: "Comic Sans MS", cursive;
     font-style: italic;
     font-size: 70px;
-    /* overflow: scroll; */
-    
 }
 
 .header{
     height: 70px;
     padding-top: 15px;
     text-align: left;
-    /* overflow: scroll; */
 }
 
 .openHeader{
@@ -59,7 +97,6 @@ header{
 }
 
 .inputHeader{
-    /* outline: 2px solid; */
     color: red;
     height: 30px;
     width: 190px;
@@ -83,7 +120,6 @@ header{
 }
 
 .card{
-    outline: 0px solid;
     height: 400px;
     width: 250px;
     margin-left: 20px;
@@ -92,12 +128,9 @@ header{
     background-color: #ebebeb;
     border-radius: 20px;
     background-image: url("./img/тетрадь.png");
-    /* overflow: auto; */
-    
 }
 
 .card h1 {
-    outline: 0px solid;
     position: relative;
     text-align: center;
     margin: 0 0 15px 0;
@@ -111,8 +144,6 @@ header{
     overflow: auto;
     background: none;
     top: 15px;
-    
-    /* background-image: url("./img/13754_middle.jpg") */
 }
 
 .card.body{
@@ -125,7 +156,6 @@ header{
 }
 
 .card.input{
-    /* outline: 2px solid; */
     margin: 0;
     padding: 15px 0;
     text-align: right;
@@ -133,11 +163,6 @@ header{
     height: 30px;
     background: none;
     position: relative;
-    /* background-image: url("./img/plus.png");
-    background-repeat: no-repeat;
-    background-position: 2px; */
-    
-
 }
 
 .card.input input{
@@ -147,7 +172,66 @@ header{
     width: 200px;
     background-color:  rgba(247, 246, 243, 0.9);
     border-radius: 20px;
-    /* background: none; */
+}
+
+.card.bigCard.input #input{
+    width: 400px;
+    left: 60px;
+}
+
+.card.bigCard #deleteList{
+    visibility: hidden;
+}
+
+.card.bigCard.input #input input{
+    width: 350px;
+}
+
+.card.body.bigCard #closeList{
+    width: 400px;
+    height: 150px;
+    text-align: center;
+}
+
+.card.body.bigCard #openList{
+    width: 400px;
+    height: 150px;
+}
+
+.card.body.bigCard #openListInput{
+    left: 50px;
+    top: 20px;
+    width: 300px;
+    height: 30px;
+    font-size: 25px;
+    text-align: center;
+    
+}
+
+.card.body.bigCard #openListSelect{
+    /* outline: 2px solid; */
+    top: 90px;
+    left: 50px;
+    width: 300px;
+}
+
+.card.body.bigCard #openListSelect select{
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+}
+
+.card.body.bigCard #openListSelect button{
+    width: 70px;
+    height: 35px;
+}
+
+.card.body.bigCard #closeListNote{
+    font-size: 25px;
+    width: 370px;
+    height: 100px;
+    left: 10px;
+
 }
 
 .card.input input:focus{
@@ -162,7 +246,6 @@ header{
 .closeList{
     text-align: center;
     margin: 5px auto;
-    /* outline: 2px solid; */
     width: 220px;
     height: 75px;
     position: relative;
@@ -176,11 +259,9 @@ header{
     height: 50px;
     width: 200px;
     position: absolute;
-    /* outline: 2px solid; */
     left: 7px;
     top: 20px;
     font-size: 18px;
-    /* vertical-align: middle; */
     background: none;
     overflow: auto;
     
@@ -189,7 +270,6 @@ header{
 .openList{
     text-align: center;
     margin: 5px auto;
-    /* outline: 2px solid; */
     width: 220px;
     height: 75px;
     position: relative;
@@ -239,6 +319,11 @@ header{
     background-image: url("./img/pen_alt_fill.svg");
     right: 35px;
     top:2px;
+}
+
+.bigCardImg{
+    width: 50px;
+    height: 50px;
 }
 
 .hand.deleteList{

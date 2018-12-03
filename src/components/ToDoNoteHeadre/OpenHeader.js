@@ -1,23 +1,22 @@
 import React from "react"
 
 const OpenHeader = ({listId, listName, editList, changeState}) => {
-    var inputValue = listName;
     return(
-        <div className="openHeader">
+        <div id={"openHeader"} className="openHeader">
             <input 
                 defaultValue={listName} 
                 className="inputHeader" 
-                onKeyDown={(e)=>{
-                    inputValue = e.currentTarget.value;
-                    if (e.keyCode === 13){
-                        editList(listId, inputValue);
-                        changeState();   
+                onChange={(e)=>listName = e.currentTarget.value}
+                onKeyDown = {e => 
+                    {if (e.keyCode === 13){
+                        editList(listId, listName);
+                        changeState(listId);   
                     }
                 }}>
             </input>
             <button className="buttonHeader" onClick={() => {
-                editList(listId,inputValue);
-                changeState();
+                editList(listId, listName);
+                changeState(listId);
                 }}>
                 &#10004;
             </button>

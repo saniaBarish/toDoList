@@ -5,10 +5,11 @@ const NoteLists = ({notes, lists, list}) => {
     return(
         notes.filter(note => note.listId === list.id).map(note => {
             return (
-                <section key = {note.id}> 
+                <section key = {note.id} > 
                     <Note 
                         note={note} 
-                        lists={lists} 
+                        lists={lists}
+                        isOpen={note.isOpen} 
                     /> 
                 </section>
             )

@@ -9,7 +9,8 @@ const ToDoNoteList = ({lists}) =>{
                     key = {list.id}
                     >
                     <ToDoNote 
-                        list = {list} 
+                        list = {list}
+                        isOpen = {list.isOpen} 
                     />
                 </section>
                

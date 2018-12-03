@@ -1,13 +1,13 @@
 import React from "react";
 import {render} from "react-dom";
 import { Provider } from "react-redux";
+import MyRoute from "./router/MyRouter"
 import store from "./store/store"
-import App from "./conteiner/App";
 import "./style/Trello.css";
 
 render(
     <Provider store = {store}>
-        <App/>
+        <MyRoute/>
     </Provider>, 
     document.getElementById("root")
 );

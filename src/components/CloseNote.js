@@ -1,18 +1,18 @@
 import React from "react";
 
 
-const CloseNote = ({note, changeState, deleteNote}) => {
+const CloseNote = ({noteId, noteDiscription, onChangeStateNote, deleteNote}) => {
     return(
-        <div className="closeList">
-            <div className="closeList note">
-                {note.discription}
+        <div id={"closeList"} className="closeList">
+            <div id={"closeListNote"} className="closeList note">
+                {noteDiscription}
             </div>
             <a className="hand" href="public/index.html" 
                 onClick={(e) => e.preventDefault()}>
                 <div
                     className="hand edit" 
                     onClick = {() =>{
-                        changeState();
+                        onChangeStateNote(noteId);
                     }}>
                 </div>
             </a>
@@ -20,7 +20,7 @@ const CloseNote = ({note, changeState, deleteNote}) => {
                 onClick={(e) => e.preventDefault()}>
                 <div
                     className="hand delete" 
-                    onClick = {() => deleteNote(note.id)}>
+                    onClick = {() => deleteNote(noteId)}>
                 </div>
             </a>
         </div>
